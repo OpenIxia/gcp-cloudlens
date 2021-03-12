@@ -221,26 +221,9 @@ Manager.
 The following ports must be open so that sensors can communicate with
 CloudLens Manager:
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Protocol</strong></th>
-<th><strong>Port Number</strong></th>
-<th><strong>Direction</strong></th>
-<th><strong>Host</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>TCP</p>
-</blockquote></td>
-<td>443</td>
-<td>Inbound and Outbound</td>
-<td>CloudLens Manager IP or hostname</td>
-</tr>
-</tbody>
-</table>
+| **Protocol** | **Port Number** | **Direction**        | **Host**                         |
+|--------------|-----------------|----------------------|----------------------------------|
+| TCP          | 443             | Inbound and Outbound | CloudLens Manager IP or hostname |
 
 ### Tap groups and tool groups
 
@@ -248,73 +231,14 @@ Depending on the encapsulation selected for the connection between a tap
 group containing tap sensors and a tool group containing tool sensors or
 static destinations, the following ports and protocols must be open:
 
-<table>
-<thead>
-<tr class="header">
-<th><strong>Connection</strong></th>
-<th><strong>Protocol</strong></th>
-<th><strong>Port</strong></th>
-<th><strong>Direction for Tap</strong></th>
-<th><strong>Direction for Tool / Static Destination</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><blockquote>
-<p>VXLAN</p>
-</blockquote></td>
-<td>UDP</td>
-<td>4789</td>
-<td>Outbound</td>
-<td>Inbound</td>
-</tr>
-<tr class="even">
-<td><blockquote>
-<p>GRE</p>
-</blockquote></td>
-<td>GRE (IP Proto 47)</td>
-<td>N/A</td>
-<td>Outbound</td>
-<td>Inbound</td>
-</tr>
-<tr class="odd">
-<td><blockquote>
-<p>ERSPAN</p>
-</blockquote></td>
-<td>GRE (IP Proto 47)</td>
-<td>N/A</td>
-<td>Outbound</td>
-<td>Inbound</td>
-</tr>
-<tr class="even">
-<td><blockquote>
-<p>VLAN</p>
-</blockquote></td>
-<td>802.1Q</td>
-<td>N/A</td>
-<td>Outbound</td>
-<td>Inbound</td>
-</tr>
-<tr class="odd">
-<td><blockquote>
-<p>Encrypted (see note below)</p>
-</blockquote></td>
-<td>UDP</td>
-<td>9993</td>
-<td>Outbound to Internet</td>
-<td>Outbound to Internet</td>
-</tr>
-<tr class="even">
-<td><blockquote>
-<p>Encrypted (see note below)</p>
-</blockquote></td>
-<td>UDP</td>
-<td>19993</td>
-<td>Inbound / Outbound to tool</td>
-<td>Inbound / Outbound to tap</td>
-</tr>
-</tbody>
-</table>
+| **Connection**             | **Protocol**      | **Port** | **Direction for Tap**      | **Direction for Tool / Static Destination** |
+|----------------------------|-------------------|----------|----------------------------|---------------------------------------------|
+| VXLAN                      | UDP               | 4789     | Outbound                   | Inbound                                     |
+| GRE                        | GRE (IP Proto 47) | N/A      | Outbound                   | Inbound                                     |
+| ERSPAN                     | GRE (IP Proto 47) | N/A      | Outbound                   | Inbound                                     |
+| VLAN                       | 802.1Q            | N/A      | Outbound                   | Inbound                                     |
+| Encrypted (see note below) | UDP               | 9993     | Outbound to Internet       | Outbound to Internet                        |
+| Encrypted (see note below) | UDP               | 19993    | Inbound / Outbound to tool | Inbound / Outbound to tap                   |
 
 > **Note:** For more information about the Encrypted connection, see
 > [<u>https://zerotier.atlassian.net/wiki/spaces/SD/pages/6815768/Router+Configuration+Tips</u>](https://zerotier.atlassian.net/wiki/spaces/SD/pages/6815768/Router+Configuration+Tips)

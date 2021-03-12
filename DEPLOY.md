@@ -2,23 +2,22 @@
 
 The workflow for getting started with CloudLens Manager is as follows:
 
-1.  <u>Deploy CloudLens Manager</u>
+1.  Deploy CloudLens Manager
 
-2.  <u>Log in</u> to CloudLens Manager as an Operational user
+2.  Log in to CloudLens Manager as an Operational user
 
-3.  In CloudLens Manager, <u>create a project</u>.
+3.  In CloudLens Manager, create a project.
 
-4.  On the project page, <u>launch the instances</u> that you want to
-    monitor (tapped VMs) or use for monitoring and analysis
-    (tool-hosting VMs).
+4.  On the project page, launch the instances that you want to monitor
+    (tapped VMs) or use for monitoring and analysis (tool-hosting VMs).
 
-5.  On the project page, <u>define groups</u> for the instances (tap
-    groups for the tapped VMs, tool groups for the tool-hosting VMs).
+5.  On the project page, define groups for the instances (tap groups for
+    the tapped VMs, tool groups for the tool-hosting VMs).
 
-6.  <u>Connect</u> the instance and tool groups to each other.
+6.  Connect the instance and tool groups to each other.
 
-7.  <u>Configure the connection</u> for the type of traffic you want to
-    send (the connection properties).
+7.  Configure the connection for the type of traffic you want to send
+    (the connection properties).
 
 # Deploying CloudLens Manager
 
@@ -68,11 +67,11 @@ To deploy CloudLens Manager on Google Cloud:
 
     5.  Specify the path to the storage file.
 
-> <img src="media/image2.png" style="width:6.21875in;height:0.41583in" />
+    6.  **Important!** Do not select an operating system.
 
-6.  Click Create.
+    7.  Click Create.
 
-> <img src="media/image3.jpg" style="width:5.0625in;height:4.95833in" />
+> <img src="media/image2.jpg" style="width:5.0625in;height:4.95833in" />
 
 5.  Create an instance based on the imported image:
 
@@ -80,7 +79,7 @@ To deploy CloudLens Manager on Google Cloud:
 
     2.  Click Create Instance.
 
-> <img src="media/image4.jpg" style="width:6.30208in;height:1.91667in" />
+> <img src="media/image3.jpg" style="width:6.30208in;height:1.91667in" />
 
 3.  Select at least a 4GB CPU and 16GB of RAM.
 
@@ -99,28 +98,8 @@ The default credentials for the CloudLens admin account are:
 |-----------|----------------|
 | password: | Cl0udLens@dm!n |
 
-To login to CloudLens Manager:
-
-1.  In a web browser, access the following URL:
-
-> https://&lt;VM IP address&gt;/startup where &lt;VM IP address&gt; is
-> the IP address of the VM where you deployed CloudLens Manager.
-
-2.  Choose one:
-
-    -   If you already have an account, click Login, then enter your
-        account username and password into the fields.
-
-    -   If you need to create an account, select **Create User**, create
-        an account, then enter your
-
-> new account username and password into the fields.
->
-> **Note:** The Create User option only displays if the admin user
-> allows it.
->
-> After you login, the initial page that displays depends on whether you
-> logged in as an admin user or an operational user:
+After you login, the initial page that displays depends on whether you
+logged in as an admin user or an operational user:
 
 -   If you logged in as an admin user, the Cluster Statistics page
     displays as the initial page. You can view the statistics on this
@@ -128,11 +107,9 @@ To login to CloudLens Manager:
     Manager deployment.
 
 -   If you logged in as an operational user, the Project wizard
-    displays.
-
-> You can use the wizard to guide you in creating a project, or you can
-> skip the wizard. If you decide to skip the wizard, you can create your
-> project manually.
+    displays.You can use the wizard to guide you in creating a project,
+    or you can skip the wizard. If you decide to skip the wizard, you
+    can create your project manually.
 
 # CloudLens for operational users
 
@@ -166,6 +143,41 @@ After you login and the project wizard displays, choose one:
 You can launch new Linux or Windows sensors for tapping or for adding to
 a tool group.
 
+#### Google Cloud Packet Mirroring
+
+To use the Google Cloud Packet Mirroring feature
+([<u>https://cloud.google.com/vpc/docs/packetmirroring</u>](https://cloud.google.com/vpc/docs/packet-mirroring)),
+you configure the sensor as a collector, and it then discovers all the
+traffic mirror sessions and the sources attached to that target
+instance.
+
+You can add Google Cloud instances by their name, by a tag, or by a
+subnet.
+
+<img src="media/image4.jpg" style="width:5.76042in;height:3.76042in" alt="Diagram Description automatically generated" />
+
+The collector instance is transparent and does not display in CloudLens
+Manager.
+
+However, all the instances that are forwarding traffic through the vnet
+tap towards the collector are visible in CloudLens Manager, as if they
+have sensors installed on them.
+
+To function as a collector, the sensor must have the --runmode parameter
+set to collector.
+
+If --runmode is omitted or is set to a value other than collector, the
+sensor functions as a standard (non-collector) instance.
+
+The procedures for installing and configuring the sensor as a collector
+are described in CloudLens Manager . To display them:
+
+1.  Select the Settings icon.
+
+2.  Select Deploy Guide.
+
+3.  Select Install Google CloudLens Collector.
+
 #### Linux installation
 
 To launch a Linux sensor:
@@ -188,8 +200,8 @@ To launch a Linux sensor:
 
 7.  Execute the Docker command.
 
-After a short delay, the new sensor will display in the project list's
-of sensors.
+After a short delay, the new sensor will display in the project list of
+sensors.
 
 #### Firewall ports
 
@@ -347,7 +359,7 @@ static destinations, the following ports and protocols must be open:
 </table>
 
 > **Note:** For more information about the Encrypted connection, see
-> <u>https://zerotier.atlassian.net/wiki/spaces/SD/pages/6815768/Router+Configuration+Tips</u>
+> [<u>https://zerotier.atlassian.net/wiki/spaces/SD/pages/6815768/Router+Configuration+Tips</u>](https://zerotier.atlassian.net/wiki/spaces/SD/pages/6815768/Router+Configuration+Tips)
 
 ## Collector mode
 
@@ -356,38 +368,3 @@ collector mode, the sensor receives all the traffic information for the
 monitored instances from the cloud provider using vTap and forwards it
 to another sensor running as a tool or to a static destination for
 analysis.
-
-### Google Cloud Packet Mirroring
-
-To use the Google Cloud Packet Mirroring feature
-([<u>https://cloud.google.com/vpc/docs/packetmirroring</u>](https://cloud.google.com/vpc/docs/packet-mirroring)),
-you configure the sensor as a collector, and it then discovers all the
-traffic mirror sessions and the sources attached to that target
-instance.
-
-You can add Google Cloud instances by their name, by a tag, or by a
-subnet.
-
-<img src="media/image6.jpg" style="width:5.76042in;height:3.76042in" />
-
-The collector instance is transparent and does not display in CloudLens
-Manager.
-
-However, all the instances that are forwarding traffic through the vnet
-tap towards the collector are visible in CloudLens Manager, as if they
-have sensors installed on them.
-
-To function as a collector, the sensor must have the --runmode parameter
-set to collector.
-
-If --runmode is omitted or is set to a value other than collector, the
-sensor functions as a standard (non-collector) instance.
-
-The procedures for installing and configuring the sensor as a collector
-are described in CloudLens Manager . To display them:
-
-1.  Select the Settings icon.
-
-2.  Select Deploy Guide.
-
-3.  Select Install Google CloudLens Collector.

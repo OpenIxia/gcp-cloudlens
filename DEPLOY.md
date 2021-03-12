@@ -224,9 +224,7 @@ CloudLens Manager:
 <table>
 <thead>
 <tr class="header">
-<th><blockquote>
-<p><strong>Protocol</strong></p>
-</blockquote></th>
+<th><strong>Protocol</strong></th>
 <th><strong>Port Number</strong></th>
 <th><strong>Direction</strong></th>
 <th><strong>Host</strong></th>
@@ -253,26 +251,15 @@ static destinations, the following ports and protocols must be open:
 <table>
 <thead>
 <tr class="header">
-<th><blockquote>
-<p><strong>Connection</strong></p>
-</blockquote></th>
+<th><strong>Connection</strong></th>
 <th><strong>Protocol</strong></th>
 <th><strong>Port</strong></th>
-<th><blockquote>
-<p><strong>Direction</strong></p>
-</blockquote></th>
-<th></th>
+<th><strong>Direction for Tap</strong></th>
+<th><strong>Direction for Tool / Static Destination</strong></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td><strong>Tap</strong></td>
-<td><strong>Tool / Static Destination</strong></td>
-</tr>
-<tr class="even">
 <td><blockquote>
 <p>VXLAN</p>
 </blockquote></td>
@@ -281,7 +268,7 @@ static destinations, the following ports and protocols must be open:
 <td>Outbound</td>
 <td>Inbound</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><blockquote>
 <p>GRE</p>
 </blockquote></td>
@@ -290,7 +277,7 @@ static destinations, the following ports and protocols must be open:
 <td>Outbound</td>
 <td>Inbound</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><blockquote>
 <p>ERSPAN</p>
 </blockquote></td>
@@ -299,7 +286,7 @@ static destinations, the following ports and protocols must be open:
 <td>Outbound</td>
 <td>Inbound</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><blockquote>
 <p>VLAN</p>
 </blockquote></td>
@@ -308,7 +295,7 @@ static destinations, the following ports and protocols must be open:
 <td>Outbound</td>
 <td>Inbound</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><blockquote>
 <p>Encrypted (see note below)</p>
 </blockquote></td>
@@ -317,51 +304,14 @@ static destinations, the following ports and protocols must be open:
 <td>Outbound to Internet</td>
 <td>Outbound to Internet</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><blockquote>
-<p>Encrypted (see note</p>
+<p>Encrypted (see note below)</p>
 </blockquote></td>
 <td>UDP</td>
 <td>19993</td>
-<td>Inbound / Outbound to</td>
-<td>Inbound / Outbound to</td>
-</tr>
-<tr class="even">
-<td><blockquote>
-<p><strong>Connection</strong></p>
-</blockquote></td>
-<td><blockquote>
-<p><strong>Protocol</strong></p>
-</blockquote></td>
-<td><blockquote>
-<p><strong>Port</strong></p>
-</blockquote></td>
-<td><strong>Dir</strong></td>
-<td><strong>ection</strong></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-<td></td>
-<td><blockquote>
-<p><strong>Tap</strong></p>
-</blockquote></td>
-<td><blockquote>
-<p><strong>Tool / Static Destination</strong></p>
-</blockquote></td>
-</tr>
-<tr class="even">
-<td><blockquote>
-<p>below)</p>
-</blockquote></td>
-<td></td>
-<td></td>
-<td><blockquote>
-<p>tool</p>
-</blockquote></td>
-<td><blockquote>
-<p>tap</p>
-</blockquote></td>
+<td>Inbound / Outbound to tool</td>
+<td>Inbound / Outbound to tap</td>
 </tr>
 </tbody>
 </table>

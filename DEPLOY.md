@@ -1,4 +1,6 @@
-# Workflow
+# CloudLens Quick Deployment Guide for Google Cloud
+
+## Workflow
 
 The workflow for getting started with CloudLens Manager is as follows:
 
@@ -19,7 +21,7 @@ The workflow for getting started with CloudLens Manager is as follows:
 7.  Configure the connection for the type of traffic you want to send
     (the connection properties).
 
-# Deploying CloudLens Manager
+## Deploying CloudLens Manager
 
 CloudLens Manager can be deployed on the following platforms.
 
@@ -33,7 +35,7 @@ CloudLens Manager can be deployed on the following platforms.
 
 -   Microsoft Azure
 
-## Google Cloud
+### Google Cloud
 
 For deployment on Google Cloud Platform (GCP), CloudLens Manager is
 supplied as a VMDK file.
@@ -90,7 +92,7 @@ To deploy CloudLens Manager on Google Cloud:
 6.  To access CloudLens Manager, open a web browser and enter instance's
     IP address in the URL field (https://&lt;vm-ip-address&gt;).
 
-# Logging in
+## Logging in
 
 The default credentials for the CloudLens admin account are:
 
@@ -111,9 +113,7 @@ logged in as an admin user or an operational user:
     or you can skip the wizard. If you decide to skip the wizard, you
     can create your project manually.
 
-# CloudLens for operational users
-
-## Getting Started with CloudLens Manager
+## CloudLens for operational users
 
 When you login to CloudLens Manager for the first time, the project
 wizard starts, and takes you through the process of creating a new
@@ -138,12 +138,20 @@ After you login and the project wizard displays, choose one:
 -   Skip the wizard and create your project manually, or perform other
     tasks
 
-### Launching sensors
+## Launching sensors
 
 You can launch new Linux or Windows sensors for tapping or for adding to
 a tool group.
 
-#### Google Cloud Packet Mirroring
+### Collector mode
+
+In public cloud deployments, you can run sensors in collector mode. In
+collector mode, the sensor receives all the traffic information for the
+monitored instances from the cloud provider using vTap and forwards it
+to another sensor running as a tool or to a static destination for
+analysis.
+
+### Google Cloud Packet Mirroring
 
 To use the Google Cloud Packet Mirroring feature
 ([<u>https://cloud.google.com/vpc/docs/packetmirroring</u>](https://cloud.google.com/vpc/docs/packet-mirroring)),
@@ -178,7 +186,7 @@ are described in CloudLens Manager . To display them:
 
 3.  Select Install Google CloudLens Collector.
 
-#### Linux installation
+### Linux installation
 
 To launch a Linux sensor:
 
@@ -203,12 +211,12 @@ To launch a Linux sensor:
 After a short delay, the new sensor will display in the project list of
 sensors.
 
-#### Firewall ports
+## Firewall ports
 
 This page describes the TCP and UDP ports that must open for CloudLens
 Manager.
 
-##### Sensors
+### Sensors
 
 The following ports must be open so that sensors can communicate with
 CloudLens Manager:
@@ -236,7 +244,7 @@ CloudLens Manager:
 </tbody>
 </table>
 
-##### Tap groups and tool groups
+### Tap groups and tool groups
 
 Depending on the encapsulation selected for the connection between a tap
 group containing tap sensors and a tool group containing tool sensors or
@@ -360,11 +368,3 @@ static destinations, the following ports and protocols must be open:
 
 > **Note:** For more information about the Encrypted connection, see
 > [<u>https://zerotier.atlassian.net/wiki/spaces/SD/pages/6815768/Router+Configuration+Tips</u>](https://zerotier.atlassian.net/wiki/spaces/SD/pages/6815768/Router+Configuration+Tips)
-
-## Collector mode
-
-In public cloud deployments, you can run sensors in collector mode. In
-collector mode, the sensor receives all the traffic information for the
-monitored instances from the cloud provider using vTap and forwards it
-to another sensor running as a tool or to a static destination for
-analysis.

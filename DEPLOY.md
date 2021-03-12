@@ -2,24 +2,29 @@
 
 ## Workflow
 
-The workflow for getting started with CloudLens Manager is as follows:
+The workflow for getting started with CloudLens Visibility Platform on
+GCP is as follows:
 
-1.  Deploy CloudLens Manager
+1.  Deploy CloudLens Manager as a GCP Compute instance
 
 2.  Log in to CloudLens Manager as an Operational user
 
-3.  In CloudLens Manager, create a project.
+3.  In CloudLens Manager, create a project
 
-4.  On the project page, launch the instances that you want to monitor
-    (tapped VMs) or use for monitoring and analysis (tool-hosting VMs).
+4.  Deploy Google CloudLens Collector instances and configure GCP Packet
+    Mirroring sessions for workloads you want to monitor (tapped VMs)
 
-5.  On the project page, define groups for the instances (tap groups for
-    the tapped VMs, tool groups for the tool-hosting VMs).
+5.  Launch CloudLens agents on compute instances you want to use for
+    monitoring and analysis (tool-hosting VMs) to forward mirrored
+    traffic via encrypted tunnel. If your tool doesn’t support CloudLens
+    agent deployment, use one of the CloudLens tunneling options to send
+    mirrored traffic to tool-hosting VMs without additional encryption
 
-6.  Connect the instance and tool groups to each other.
-
-7.  Configure the connection for the type of traffic you want to send
-    (the connection properties).
+6.  On the project page, define groups for the instances: instance
+    groups for the tapped VMs, monitoring tool groups for the
+    tool-hosting VMs. Connect the instance and monitoring tool groups to
+    each other to create a monitoring policy. Configure the connection
+    for the type of traffic you want to send (the connection properties)
 
 ## Deploying CloudLens Manager
 
@@ -35,14 +40,15 @@ CloudLens Manager can be deployed on the following platforms.
 
 -   Microsoft Azure
 
-### Google Cloud
-
 For deployment on Google Cloud Platform (GCP), CloudLens Manager is
 supplied as a VMDK file.
 
 To deploy CloudLens Manager on Google Cloud:
 
-1.  Download the VMDK file from the Keysight website.
+1.  Download the VMDK file from the [Keysight support
+    website](https://support.ixiacom.com/support-overview/product-support/downloads-updates),
+    CloudLens / CloudLens Virtual TAP (vTAP) section. GCP deployment is
+    supported starting with CloudLens version 6.0.0.
 
 2.  Log in to Google Cloud.
 
@@ -90,7 +96,8 @@ To deploy CloudLens Manager on Google Cloud:
 <!-- -->
 
 6.  To access CloudLens Manager, open a web browser and enter instance's
-    IP address in the URL field (https://&lt;vm-ip-address&gt;).
+    IP address in the URL field (&gt;). It may take up some time for
+    CloudLens Manager Web UI to initialize.
 
 ## Logging in
 

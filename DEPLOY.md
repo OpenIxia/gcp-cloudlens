@@ -34,24 +34,6 @@ CloudLens Manager can be deployed on the following platforms.
 
 -   Microsoft Azure
 
-## 
-
-<table>
-<tbody>
-<tr class="odd">
-<td></td>
-<td><ul>
-<li></li>
-<li></li>
-</ul>
-<ul>
-<li></li>
-<li></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
-
 ## Google Cloud
 
 For deployment on Google Cloud Platform (GCP), CloudLens Manager is
@@ -197,7 +179,7 @@ To launch a Linux sensor:
 
 4.  The Start new agents window displays.
 
-> <img src="media/image9.jpg" style="width:6.63542in;height:3.55208in" />
+> <img src="media/image5.jpg" style="width:6.63542in;height:3.55208in" />
 
 5.  Copy the sample Docker command from the Start new agents window and
     paste it into the Linux VM's console window.
@@ -208,120 +190,6 @@ To launch a Linux sensor:
 
 After a short delay, the new sensor will display in the project list's
 of sensors.
-
-1.  
-2.  
-3.  
-4.  
-5.  
-6.  
-7.  
-
-<table>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><ol type="a">
-<li></li>
-<li></li>
-</ol></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
--   
--   
-
-8.  
-
-#### 
-
-##### 
-
-|     |     |
-|-----|-----|
-|     |     |
-
-<table>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td><table>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td><table>
-<tbody>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td></td>
-<td></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-##### 
-
-|     |     |
-|-----|-----|
-|     |     |
-|     |     |
-|     |     |
-|     |     |
-|     |     |
-|     |     |
-|     |     |
-|     |     |
-|     |     |
 
 #### Firewall ports
 
@@ -481,79 +349,6 @@ static destinations, the following ports and protocols must be open:
 > **Note:** For more information about the Encrypted connection, see
 > <u>https://zerotier.atlassian.net/wiki/spaces/SD/pages/6815768/Router+Configuration+Tips</u>
 
-#### 
-
-<table>
-<tbody>
-<tr class="odd">
-<td><ul>
-<li></li>
-<li></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
-
-|     |
-|-----|
-|     |
-
-<table>
-<tbody>
-<tr class="odd">
-<td><ul>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ul></td>
-</tr>
-</tbody>
-</table>
-
-## 
-
-### 
-
-1.  
-2.  
-3.  
-4.  
-
-|     |     |
-|-----|-----|
-|     |     |
-|     |     |
-|     |     |
-
-5.  
-
-### 
-
-1.  
-2.  
-3.  
-4.  
-
-|     |     |
-|-----|-----|
-|     |     |
-|     |     |
-|     |     |
-|     |     |
-
-5.  
-
-### 
-
-1.  
-2.  
-3.  
-4.  
-
 ## Collector mode
 
 In public cloud deployments, you can run sensors in collector mode. In
@@ -573,7 +368,7 @@ instance.
 You can add Google Cloud instances by their name, by a tag, or by a
 subnet.
 
-<img src="media/image16.jpg" style="width:5.76042in;height:3.76042in" />
+<img src="media/image6.jpg" style="width:5.76042in;height:3.76042in" />
 
 The collector instance is transparent and does not display in CloudLens
 Manager.

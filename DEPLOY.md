@@ -29,17 +29,17 @@ GCP is as follows:
 
 ## Deploying CloudLens Manager
 
-CloudLens Manager can be deployed on the following platforms.
-
--   VMware ESXi (standalone or vCenter)
-
--   KVM
+CloudLens Manager can be deployed on the following platforms:
 
 -   Amazon AWS
 
 -   Google Cloud
 
 -   Microsoft Azure
+
+-   VMware ESXi
+
+-   Linux KVM
 
 For deployment on Google Cloud Platform (GCP), CloudLens Manager is
 supplied as a VMDK file.
@@ -49,56 +49,59 @@ To deploy CloudLens Manager on Google Cloud:
 1.  Download the VMDK file from the [Keysight support
     website](https://support.ixiacom.com/support-overview/product-support/downloads-updates),
     CloudLens / CloudLens Virtual TAP (vTAP) section. GCP deployment is
-    supported starting with CloudLens version 6.0.0.
+    supported starting with CloudLens version 6.0.0
 
-2.  Log in to Google Cloud.
+2.  Log in to Google Cloud
 
 3.  Import the file into Cloud Storage:
 
-    1.  Open Storage.
+    1.  Open Storage
 
-    2.  Click Create Bucket.
+    2.  Click Create Bucket
 
     3.  Open the new bucket, click Upload files, and select the VMDK
-        file.
+        file
 
 > <img src="media/image1.jpg" style="width:6.30208in;height:1.75in" />
 
 4.  Create an image from the VMDK file:
 
-    1.  Click Compute Engine \| Storage \| Images.
+    1.  Click Compute Engine \| Storage \| Images
 
-    2.  Click Create Image.
+    2.  Click Create Image
 
-    3.  Specify a name for your VM.
+    3.  Specify a name for your Compute Image
 
-    4.  Select the Source Virtual Disk you want to use.
+    4.  Select Virtual Disk (VMDK, VHD) as Source
 
-    5.  Specify the path to the storage file.
+    5.  Specify the path to the storage file
 
-    6.  **Important!** Do not select an operating system.
+    6.  **Important!** Do not select an operating system
 
-    7.  Click Create.
+    7.  Click Create
 
 > <img src="media/image2.jpg" style="width:5.0625in;height:4.95833in" />
 
-5.  Create an instance based on the imported image:
+5.  Create a CloudLens Manager compute instance based on the imported
+    image:
 
-    1.  Click Actions.
+    1.  Click Actions
 
-    2.  Click Create Instance.
+    2.  Click Create Instance
 
 > <img src="media/image3.jpg" style="width:6.30208in;height:1.91667in" />
 
-3.  Select at least a 4GB CPU and 16GB of RAM.
+3.  Select at least a 4GB CPU and 16GB of RAM
 
-4.  Click Create Instance.
+4.  Select Allow HTTPS traffic in the Firewall section
+
+5.  Click Create Instance
 
 <!-- -->
 
 6.  To access CloudLens Manager, open a web browser and enter instance's
     IP address in the URL field (&gt;). It may take up some time for
-    CloudLens Manager Web UI to initialize.
+    CloudLens Manager Web UI to initialize
 
 ## Logging in
 

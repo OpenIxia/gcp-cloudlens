@@ -107,9 +107,9 @@ To deploy CloudLens Manager on Google Cloud:
 
 The default credentials for the CloudLens admin account are:
 
-| username: | admin          |
-|-----------|----------------|
-| password: | Cl0udLens@dm!n |
+-   Username admin
+
+-   Password Cl0udLens@dm!n
 
 After you login, the initial page that displays depends on whether you
 logged in as an admin user or an operational user:
@@ -117,12 +117,13 @@ logged in as an admin user or an operational user:
 -   If you logged in as an admin user, the Cluster Statistics page
     displays as the initial page. You can view the statistics on this
     page or use the other pages to perform admin tasks in the CloudLens
-    Manager deployment.
+    Manager deployment. The first task is to create an account for an
+    operational user
 
--   If you logged in as an operational user, the Project wizard
-    displays.You can use the wizard to guide you in creating a project,
+-   Once you logged in as an operational user, the Project wizard
+    displays. You can use the wizard to guide you in creating a project,
     or you can skip the wizard. If you decide to skip the wizard, you
-    can create your project manually.
+    can create your project manually
 
 ## CloudLens for operational users
 
@@ -133,21 +134,15 @@ project. The wizard guides you in:
 -   Setting up a sample tool (ntopng) that you can use to monitor
     traffic
 
--   Integrate the sensor into your application by using Docker
+-   Integrate the CloudLens Agents into your application workloads
 
 -   Creating a tool group that contains the ntopng instance
 
 -   Creating an instance group that contains your application instances
 
-You can run through the wizard, or skip it and re-run it at a later
-time.
-
-After you login and the project wizard displays, choose one:
-
--   Run the through the wizard and create your projects
-
--   Skip the wizard and create your project manually, or perform other
-    tasks
+In this guide we are going to skip the wizard. For Google Cloud
+deployments, it is recommended to leverage GCP Packet Mirror service
+instead of integrating CloudLens Agents into application workloads.
 
 ## Launching sensors
 

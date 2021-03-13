@@ -11,20 +11,21 @@ GCP is as follows:
 
 3.  In CloudLens Manager, create a project
 
-4.  Deploy Google CloudLens Collector instances and configure GCP Packet
-    Mirroring sessions for workloads you want to monitor (tapped VMs)
+4.  Deploy CloudLens Collector GCP Compute instances and configure GCP
+    Packet Mirroring sessions for workloads you want to monitor (tapped
+    VMs)
 
 5.  Launch CloudLens agents on compute instances you want to use for
-    monitoring and analysis (tool-hosting VMs) to forward mirrored
-    traffic via encrypted tunnel. If your tool doesn’t support CloudLens
-    agent deployment, use one of the CloudLens tunneling options to send
-    mirrored traffic to tool-hosting VMs without additional encryption
+    monitoring and analysis (tool-hosting VMs) to receive mirrored
+    traffic via encrypted tunnels. If your tool doesn’t support
+    CloudLens agent deployment, use one of the CloudLens unencrypted
+    tunneling options to forward mirrored traffic to tool-hosting VMs
 
-6.  On the project page, define groups for the instances: instance
-    groups for the tapped VMs, monitoring tool groups for the
-    tool-hosting VMs. Connect the instance and monitoring tool groups to
+6.  On the CloudLens project page, define groups for the instances:
+    Instance groups for the tapped VMs, Monitoring Tool groups for the
+    tool-hosting VMs. Connect the Instance and Monitoring Tool groups to
     each other to create a monitoring policy. Configure the connection
-    for the type of traffic you want to send (the connection properties)
+    for the type of traffic you want to send
 
 ## Deploying CloudLens Manager
 

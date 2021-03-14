@@ -11,15 +11,15 @@ GCP is as follows:
 
 3.  In CloudLens Manager, create a project
 
-4.  Deploy CloudLens Collector GCP Compute instances and configure GCP
-    Packet Mirroring sessions for workloads you want to monitor (tapped
-    VMs)
-
-5.  Launch CloudLens agents on compute instances you want to use for
+4.  Launch CloudLens agents on compute instances you want to use for
     monitoring and analysis (tool-hosting VMs) to receive mirrored
     traffic via encrypted tunnels. If your tool doesn’t support
     CloudLens agent deployment, use one of the CloudLens unencrypted
     tunneling options to forward mirrored traffic to tool-hosting VMs
+
+5.  Deploy CloudLens Collector GCP Compute instances and configure GCP
+    Packet Mirroring sessions for workloads you want to monitor (tapped
+    VMs)
 
 6.  On the CloudLens project page, define groups for the instances:
     Instance groups for the tapped VMs, Monitoring Tool groups for the
@@ -134,15 +134,98 @@ project. The wizard guides you in:
 -   Setting up a sample tool (ntopng) that you can use to monitor
     traffic
 
--   Integrate the CloudLens Agents into your application workloads
+-   Integrating CloudLens Agents into your application workloads
 
 -   Creating a tool group that contains the ntopng instance
 
 -   Creating an instance group that contains your application instances
 
+-   Connecting the instance group to the tool group to establish a
+    traffic monitoring policy
+
 In this guide we are going to skip the wizard. For Google Cloud
 deployments, it is recommended to leverage GCP Packet Mirror service
 instead of integrating CloudLens Agents into application workloads.
+
+1.  Create new, empty CloudLens project in CloudLens Manager
+
+<img src="media/image4.png" style="width:3.56in;height:2.37345in" alt="Graphical user interface, application Description automatically generated" />
+
+2.  Open the project, and click SHOW PROJECT KEY
+
+<img src="media/image5.png" style="width:5.5767in;height:1.32101in" alt="A picture containing graphical user interface Description automatically generated" />
+
+3.  Copy the project key, we will need it in the next sections, when
+    launching CloudLens Agents
+
+## Launching a tool
+
+CloudLens supports the following methods of delivering mirrored traffic
+to tool-hosting VMs:
+
+-   VxLAN
+
+-   GRE
+
+-   ERSPAN
+
+-   VLAN (not applicable for public cloud)
+
+-   Encrypted overlay between CloudLens Agents
+
+Configuration of tool-hosting VMs required to receive traffic from
+CloudLens varies depending on the tool capabilities, as well as a
+delivery method. If CloudLens Agents are used to receive traffic, a tool
+side configuration can be greatly simplified. For the purposes of this
+guide, we will use a sample tool with CloudLens Agent and tcpdump
+utility for traffic capture.
+
+To deploy the sample tool:
+
+1.  Create a GCP Compute instance
+
+2.  Go to "Boot disk" section, click change, then select Ubuntu 18.04
+    LTS. If you need to use a different Linux distribution, please
+    modify CloudLens Agent deployment script below according to
+    Docker-CE installation instructions for your O/S choice.
+
+<img src="media/image6.png" style="width:4.248in;height:1.27764in" alt="Graphical user interface, text, application, chat or text message Description automatically generated" />
+
+3.  Go to "Identity and API access" section ,select "Set access for each
+    API", then give "Read only" access to "Compute Engine"
+
+<img src="media/image7.png" style="width:4.27518in;height:5.51944in" alt="Graphical user interface, text, application, email Description automatically generated" />
+
+4.  Add CloudLens Agent deployment script to Startup section. Replace
+    cl-ip-address with CloudLens Manager VM IP address or FQDN. Replace
+    &lt;cl-project-key&gt; with CloudLens Project Key. This command
+    ignores CloudLens TLS certificate validation. To enable validation,
+    refer to CloudLens Manager User Guide.
+
+sudo mkdir /etc/docker ; sudo touch /etc/docker/daemon.json; sudo bash
+-c 'echo "{\\"insecure-registries\\":\[\\"&lt;cl-ip-address&gt;\\"\]}"
+&gt;&gt; /etc/docker/daemon.json'; sudo apt-get update -y; sudo apt-get
+install apt-transport-https ca-certificates curl gnupg-agent
+software-properties-common -y; curl -fsSL
+https://download.docker.com/linux/ubuntu/gpg \| sudo apt-key add - ;
+sudo add-apt-repository "deb \[arch=amd64\]
+https://download.docker.com/linux/ubuntu $(lsb\_release -cs) stable" ;
+sudo apt-get update -y ; sudo apt-get install docker-ce docker-ce-cli
+containerd.io -y; sudo docker run -v /var/log:/var/log/cloudlens -v
+/:/host -v /var/run/docker.sock:/var/run/docker.sock -v
+/lib/modules:/lib/modules --privileged --name cloudlens-agent -d
+--restart=on-failure --net=host --log-opt max-size=50m --log-opt
+max-file=3 &lt;cl-ip-address&gt;/sensor --accept\_eula yes --ssl\_verify
+no --project\_key &lt;cl-project-key&gt; --server &lt;cl-ip-address&gt;
+
+<img src="media/image8.png" style="width:4.2875in;height:4.18925in" alt="Graphical user interface, text, application, email Description automatically generated" />
+
+5.  Fill in the rest of the form and then click Create
+
+6.  Once the tool instance is up and running, the number of Instances
+    under the CloudLens Project should increase
+
+<img src="media/image9.png" style="width:5.32869in;height:1.15285in" alt="Graphical user interface Description automatically generated with medium confidence" />
 
 ## Launching sensors
 
@@ -168,7 +251,7 @@ instance.
 You can add Google Cloud instances by their name, by a tag, or by a
 subnet.
 
-<img src="media/image4.jpg" style="width:5.76042in;height:3.76042in" alt="Diagram Description automatically generated" />
+<img src="media/image10.jpg" style="width:5.76042in;height:3.76042in" alt="Diagram Description automatically generated" />
 
 The collector instance is transparent and does not display in CloudLens
 Manager.
@@ -205,7 +288,7 @@ To launch a Linux sensor:
 
 4.  The Start new agents window displays.
 
-> <img src="media/image5.jpg" style="width:6.63542in;height:3.55208in" />
+> <img src="media/image11.jpg" style="width:6.63542in;height:3.55208in" />
 
 5.  Copy the sample Docker command from the Start new agents window and
     paste it into the Linux VM's console window.

@@ -198,7 +198,7 @@ To deploy the sample tool:
 
 4.  Add CloudLens Agent deployment script to Startup section. Replace
     cl-ip-address with CloudLens Manager VM IP address or FQDN. Replace
-    &lt;cl-project-key&gt; with CloudLens Project Key. This command
+    &lt;cl-project-key&gt; with CloudLens Project Key. This example
     ignores CloudLens TLS certificate validation. To enable validation,
     refer to CloudLens Manager User Guide.
 
@@ -227,18 +227,13 @@ no --project\_key &lt;cl-project-key&gt; --server &lt;cl-ip-address&gt;
 
 <img src="media/image9.png" style="width:5.32869in;height:1.15285in" alt="Graphical user interface Description automatically generated with medium confidence" />
 
-## Launching sensors
+##  Launching CloudLens Collector instances
 
-You can launch new Linux or Windows sensors for tapping or for adding to
-a tool group.
-
-### Collector mode
-
-In public cloud deployments, you can run sensors in collector mode. In
-collector mode, the sensor receives all the traffic information for the
-monitored instances from the cloud provider using vTap and forwards it
-to another sensor running as a tool or to a static destination for
-analysis.
+In AWS and GCP public cloud deployments, you can run CloudLens Agents in
+collector mode. In collector mode, the agents receive all the traffic
+for the monitored instances from the cloud provider using native cloud
+packet mirroring services and forward it to one or many tool instances
+or static destinations for analysis.
 
 ### Google Cloud Packet Mirroring
 
@@ -254,51 +249,184 @@ subnet.
 <img src="media/image10.jpg" style="width:5.76042in;height:3.76042in" alt="Diagram Description automatically generated" />
 
 The collector instance is transparent and does not display in CloudLens
-Manager.
+Manager. However, all the instances that are forwarding traffic through
+GCP Packet Mirroring towards the collectors are visible in CloudLens
+Manager, as if they have sensors installed on them.
 
-However, all the instances that are forwarding traffic through the vnet
-tap towards the collector are visible in CloudLens Manager, as if they
-have sensors installed on them.
+To function as a collector, a CloudLens Agent must have the --runmode
+parameter set to collector. If --runmode is omitted or is set to a value
+other than collector, the sensor functions as a standard (non-collector)
+instance.
 
-To function as a collector, the sensor must have the --runmode parameter
-set to collector.
+### Deploy CloudLens Collectors for GCP Packet Mirroring
 
-If --runmode is omitted or is set to a value other than collector, the
-sensor functions as a standard (non-collector) instance.
+To deploy CloudLens Collector instances:
 
-The procedures for installing and configuring the sensor as a collector
-are described in CloudLens Manager . To display them:
+1.  Create a GCP Compute instance
 
-1.  Select the Settings icon.
+2.  Go to "Boot disk" section, click change, then select Ubuntu 18.04
+    LTS. If you need to use a different Linux distribution, please
+    modify CloudLens Agent deployment script below according to
+    Docker-CE installation instructions for your O/S choice.
 
-2.  Select Deploy Guide.
+<img src="media/image6.png" style="width:4.248in;height:1.27764in" alt="Graphical user interface, text, application, chat or text message Description automatically generated" />
 
-3.  Select Install Google CloudLens Collector.
+3.  Go to "Identity and API access" section ,select "Set access for each
+    API", then give "Read only" access to "Compute Engine"
 
-### Linux installation
+<img src="media/image7.png" style="width:4.27518in;height:5.51944in" alt="Graphical user interface, text, application, email Description automatically generated" />
 
-To launch a Linux sensor:
+4.  Add CloudLens Agent deployment script to Startup section. Replace
+    cl-ip-address with CloudLens Manager VM IP address or FQDN. Replace
+    &lt;cl-project-key&gt; with CloudLens Project Key. This example
+    ignores CloudLens TLS certificate validation. To enable validation,
+    refer to CloudLens Manager User Guide.
 
-1.  Open a console window to the Linux VM and access the command line.
+sudo mkdir /etc/docker ; sudo touch /etc/docker/daemon.json; sudo bash
+-c 'echo "{\\"insecure-registries\\":\[\\"&lt;cl-ip-address&gt;\\"\]}"
+&gt;&gt; /etc/docker/daemon.json'; sudo apt-get update -y; sudo apt-get
+install apt-transport-https ca-certificates curl gnupg-agent
+software-properties-common -y; curl -fsSL
+https://download.docker.com/linux/ubuntu/gpg \| sudo apt-key add - ;
+sudo add-apt-repository "deb \[arch=amd64\]
+https://download.docker.com/linux/ubuntu $(lsb\_release -cs) stable" ;
+sudo apt-get update -y ; sudo apt-get install docker-ce docker-ce-cli
+containerd.io -y; sudo docker run -v /var/log:/var/log/cloudlens -v
+/:/host -v /var/run/docker.sock:/var/run/docker.sock -v
+/lib/modules:/lib/modules --privileged --name cloudlens-agent -d
+--restart=on-failure --net=host --log-opt max-size=50m --log-opt
+max-file=3 &lt;cl-ip-address&gt;/sensor --accept\_eula yes --runmode
+collector --ssl\_verify no --project\_key &lt;cl-project-key&gt;
+--server &lt;cl-ip-address&gt;
 
-2.  In CloudLens Manager, display the project that you want to add the
-    sensor to.
+<img src="media/image8.png" style="width:4.2875in;height:4.18925in" alt="Graphical user interface, text, application, email Description automatically generated" />
 
-3.  On the project's Configuration page, click Launch Agent.
+5.  Fill in the rest of the form and then click Create
 
-4.  The Start new agents window displays.
+6.  Since this CloudLens Agent is running in a collector mode, the
+    number of Instances under the CloudLens Project would not change
+    after it starts
 
-> <img src="media/image11.jpg" style="width:6.63542in;height:3.55208in" />
+### Configure GCP Packet Mirroring session
 
-5.  Copy the sample Docker command from the Start new agents window and
-    paste it into the Linux VM's console window.
+CloudLens Manager provides a convenient script to manage GCP Packet
+Mirroring session. To access the script:
 
-6.  Modify the command parameters as necessary.
+1.  Select the Settings icon
 
-7.  Execute the Docker command.
+2.  Select Collector Deploy Guide &gt; Install Google CloudLens
+    Collector
 
-After a short delay, the new sensor will display in the project list of
-sensors.
+3.  Scroll down to Configure the Packet Mirroring Session
+
+<img src="media/image11.png" style="width:5.16in;height:1.04521in" alt="Graphical user interface, text, application Description automatically generated" />
+
+4.  Press DOWLOAD SCRIPT button and save the script on your device
+
+5.  Open Google Cloud Console and Activate Cloud Shell
+
+<img src="media/image12.png" style="width:5.176in;height:1.23688in" alt="Graphical user interface, text, chat or text message Description automatically generated" />
+
+6.  Upload the script to the Cloud Shell session
+
+<img src="media/image13.png" style="width:7.00069in;height:3.46042in" alt="Graphical user interface, application Description automatically generated" />
+
+7.  To begin mirroring traffic you need to create a Packet Mirroring
+    Configuration from the desired tapped host to the CloudLens
+    Collector via Cloud Shell session
+
+python3 gcp\_packetmirroring\_cli.py --action create --region \[Region
+Name\] --project \[Project Name\] --collector \[Collector Name\]
+--mirrored-instances \[Mirrored Instances List\] --mirrored-tags
+\[Mirrored Tags List\] --mirrored-subnets \[Mirrored Subnets Name List\]
+--mirrored-network \[Mirrored Network\]
+
+Required flags:
+
+--region: Specify the name of the region where the collector and tapped
+instances are running
+
+--project: Specify Google Cloud project ID
+
+--collector: Specify the name of the collector where the traffic will be
+mirrored
+
+One or more of the following must be specified:
+
+--mirrored-instances: Specify the name of the instances to be tapped,
+separated by space
+
+--mirrored-tags: Specify the tags to be tapped, separated by space
+
+--mirrored-subnets: Specify the name of the subnets to be tapped,
+separated by space
+
+Optional flags:
+
+--mirrored-network: Specify the name of the network where tapped
+instances are. If no network is provided, default network will be used
+
+For example, to create a monitoring session for project ID
+cloudlens-demo in us-west1 region for two workloads cl-workload-1
+cl-workload-2 and one collector cl-collector, use the following syntax:
+
+python3 gcp\_packetmirroring\_cli.py --action create --region us-west1
+--project cloudlens-demo --collector cl-collector --mirrored-instances
+cl-workload-1 cl-workload-2
+
+8.  To verify GCP Packet Mirroring configuration, list monitoring
+    session resources
+
+python3 gcp\_packetmirroring\_cli.py --action list --region \[Region
+Name\] --project \[Project Name\] --collector \[Collector Name\]
+
+In our example, the syntax would be:
+
+python3 gcp\_packetmirroring\_cli.py --action list --region us-west1
+--project cloudlens-demo --collector cl-collector
+
+with the following results:
+
+Collector: cl-collector
+
+Mirrored network: default
+
+Instance: cl-workload-1
+
+Instance: cl-workload-2
+
+9.  You can also use Google Cloud Console to inspect Packet Mirroring
+    configuration created by the CloudLens script: VPC Network &gt;
+    Packet Mirroring
+
+<img src="media/image14.png" style="width:7.00069in;height:5.04236in" alt="Graphical user interface, text, application Description automatically generated" />
+
+10. To add more CloudLens collectors to the Packet Mirroring session to
+    handle more load:
+
+    1.  Follow the steps in Deploy CloudLens Collectors for GCP Packet
+        Mirroring section to create additional Collector instances
+
+    2.  Add new Collector instances to the existing GCP Packet Mirror
+        session by attaching the instances to the same instance group
+        the first Collector instance is a member of:
+
+<img src="media/image15.png" style="width:7.00069in;height:2.62431in" alt="Graphical user interface, text, email Description automatically generated" />
+
+<img src="media/image16.png" style="width:4.72in;height:4.38664in" alt="Graphical user interface, text, application Description automatically generated" />
+
+11. Once one or more CloudLens collectors are deployed and configured as
+    destinations for a GCP Packet Mirroring session, all the workloads
+    monitored by the same session become visible inside CloudLens
+    Manager Project
+
+<img src="media/image17.png" style="width:5.208in;height:1.15928in" alt="A picture containing graphical user interface Description automatically generated" />
+
+12. It is recommended to use GCP Instance labels to identify and group
+    workloads. In this example, “cl\_role” label is used, with value
+    “workload” for both cl-workload-1 and cl-workload-2 instances
+
+<img src="media/image18.png" style="width:7.00069in;height:1.91111in" alt="Table Description automatically generated" />
 
 ## Firewall ports
 

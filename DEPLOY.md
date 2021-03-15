@@ -428,6 +428,50 @@ Instance: cl-workload-2
 
 <img src="media/image18.png" style="width:7.00069in;height:1.91111in" alt="Table Description automatically generated" />
 
+## Create CloudLens groups and monitoring policy
+
+Now it is time to define a monitoring policy in CloudLens Manager, as we
+have:
+
+-   workloads monitored by CloudLens Collectors for GCP Traffic
+    Mirroring
+
+-   a sample tool to analyze traffic with a CloudLens Agent
+
+For the traffic monitoring policy to be scalable, dynamic groups of
+instances have to be created first in CloudLens.
+
+<img src="media/image19.png" style="width:5.69374in;height:4.576in" alt="Diagram Description automatically generated" />
+
+### Instance group
+
+To define a group of instances to be monitored, we choose DEFINE A GROUP
+option in CloudLens Project. Using available properties of the monitored
+workloads, create a filter to define a group. In our example, we are
+going to use tag with a name “cl\_role” and a value “workload” to create
+an “Example Workloads” instance group. Now any workload with such a
+label, added to the GCP Packet Mirroring session, would automatically be
+included into the group.
+
+<img src="media/image20.png" style="width:5.672in;height:3.74101in" alt="Graphical user interface, application, Teams Description automatically generated" />
+
+### Monitoring Tool group
+
+In a similar way, create a dynamic Monitoring Tool group. When saving
+the group, choose an option to Save as a tool. Accept default
+aggregation interface name. You are going to use it to receive mirrored
+traffic on the tool.
+
+<img src="media/image21.png" style="width:7.00069in;height:3.27292in" alt="Graphical user interface, text, application Description automatically generated" />
+
+### Traffic Monitoring Policy
+
+Finally, with both groups defined, we can define a traffic monitoring
+policy by creating a connection between two groups. In our case, we are
+forwarding all IP packets via an encrypted tunnel.
+
+<img src="media/image22.png" style="width:7.00069in;height:3.7125in" alt="Graphical user interface, application, Teams Description automatically generated" />
+
 ## Firewall ports
 
 This page describes the TCP and UDP ports that must open for CloudLens

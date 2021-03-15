@@ -18,6 +18,3 @@ Please refer to the [guide](DEPLOY.md) for detailed information on how to deploy
 # Copyright notice
 
 COPYRIGHT 2021 Keysight Technologies.
-
-This code is provided under the MIT license.  
-You can find the complete terms in [LICENSE](LICENSE).

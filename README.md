@@ -18,15 +18,15 @@ Please refer to the [guide](DEPLOY.md) for detailed information on how to deploy
 
 ## Demo examples of using CloudLens on Google Cloud
 
-* [Google Cloud Traffic Replication to Multiple Tools with Keysight CloudLens](/OpenIxia/nas-cloud-demo/blob/main/GCP_CyPerf_CloudLens.md?source=gcp-cloudlens)
+* [Google Cloud Traffic Replication to Multiple Tools with Keysight CloudLens](https://github.com/OpenIxia/nas-cloud-demo/blob/main/GCP_CyPerf_CloudLens.md?source=gcp-cloudlens)
 
 ## Related examples
 
 ### Validation of network security controls on Google Cloud with Keysight Threat Simulator
 
-* [Google Cloud IDS Demo with Keysight Threat Simulator](/OpenIxia/nas-cloud-demo/blob/main/GCP_TS_Cloud_IDS.md?source=gcp-cloudlens)
-* [Google Cloud Security Monitoring Demo - Palo Alto Networks IDS](/OpenIxia/nas-cloud-demo/blob/main/GCP_TS_Demo.md?source=gcp-cloudlens)
-* [Google Cloud Network Security Demo - Palo Alto Networks Firewall](/OpenIxia/nas-cloud-demo/blob/main/GCP_TS_PAN_NGFW_Demo.md?source=gcp-cloudlens)
+* [Google Cloud IDS Demo with Keysight Threat Simulator](https://github.com/OpenIxia/nas-cloud-demo/blob/main/GCP_TS_Cloud_IDS.md?source=gcp-cloudlens)
+* [Google Cloud Security Monitoring Demo - Palo Alto Networks IDS](https://github.com/OpenIxia/nas-cloud-demo/blob/main/GCP_TS_Demo.md?source=gcp-cloudlens)
+* [Google Cloud Network Security Demo - Palo Alto Networks Firewall](https://github.com/OpenIxia/nas-cloud-demo/blob/main/GCP_TS_PAN_NGFW_Demo.md?source=gcp-cloudlens)
 
 # Copyright notice
 

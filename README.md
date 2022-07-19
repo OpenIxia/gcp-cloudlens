@@ -1,4 +1,5 @@
-# GCP-CloudLens - Deployment examples for CloudLens network visibility software on Google Cloud Platform
+# Keysight CloudLens network visibility software on Google Cloud Platform
+
 ## Overview
 
 CloudLens is a software for intent-based multi-cloud network visibility, designed to:
@@ -9,12 +10,24 @@ CloudLens is a software for intent-based multi-cloud network visibility, designe
 
 When deployed on Google Cloud, CloudLens leverages and extends capabilities of the native [GCP Packet Mirroring service](https://cloud.google.com/vpc/docs/packet-mirroring).
 
-For more information about CloudLens, use https://www.keysight.com/us/en/products/network-visibility/cloud-visibility/cloudlens.html.
+For more information about CloudLens, use https://www.keysight.com/us/en/products/network-visibility/cloud-visibility/cloudlens.html?source=gcp-cloudlens.
 
 ## Deployment guide for Google Cloud
 
-Please refer to the [guide](DEPLOY.md) for detailed information on how to deploy and configure CloudLens for monitoring GCP.
+Please refer to the [guide](DEPLOY.md) for detailed information on how to deploy and configure CloudLens for monitoring traffic in Google Cloud.
+
+## Demo examples of using CloudLens on Google Cloud
+
+* [Google Cloud Traffic Replication to Multiple Tools with Keysight CloudLens](/OpenIxia/nas-cloud-demo/blob/main/GCP_CyPerf_CloudLens.md?source=gcp-cloudlens)
+
+## Related examples
+
+### Validation of network security controls on Google Cloud with Keysight Threat Simulator
+
+* [Google Cloud IDS Demo with Keysight Threat Simulator](/OpenIxia/nas-cloud-demo/blob/main/GCP_TS_Cloud_IDS.md?source=gcp-cloudlens)
+* [Google Cloud Security Monitoring Demo - Palo Alto Networks IDS](/OpenIxia/nas-cloud-demo/blob/main/GCP_TS_Demo.md?source=gcp-cloudlens)
+* [Google Cloud Network Security Demo - Palo Alto Networks Firewall](/OpenIxia/nas-cloud-demo/blob/main/GCP_TS_PAN_NGFW_Demo.md?source=gcp-cloudlens)
 
 # Copyright notice
 
-COPYRIGHT 2021 Keysight Technologies.
+COPYRIGHT 2022 Keysight Technologies.

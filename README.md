@@ -1,4 +1,4 @@
-# Keysight CloudLens network visibility software on Google Cloud Platform
+# Network visibility on Google Cloud with Keysight CloudLens
 
 ## Overview
 
@@ -11,6 +11,13 @@ CloudLens is a software for [intent-based multi-cloud network visibility](https:
 When deployed on Google Cloud, CloudLens leverages and extends capabilities of the native [GCP Packet Mirroring service](https://cloud.google.com/vpc/docs/packet-mirroring).
 
 For more information about CloudLens, use [CloudLens product page](https://www.keysight.com/us/en/products/network-visibility/cloud-visibility/cloudlens.html?source=gcp-cloudlens).
+
+## Cloud Network Security Assurance
+
+Learn how to [extend confidence in network security to the Cloud](https://www.keysight.com/us/en/solutions/cloud/cloud-network-security-assurance.html?source=gcp-cloudlens) via:
+* Security Posture Monitoring
+* Multi-Cloud Traffic Visibility
+* Network Security Component Testing
 
 ## Deployment guide for Google Cloud
 
